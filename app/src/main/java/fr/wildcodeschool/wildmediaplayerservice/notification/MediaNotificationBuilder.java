@@ -24,8 +24,9 @@ public class MediaNotificationBuilder<I extends NotificationItem>
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            builder.setStyle(new android.support.v4.media.app.NotificationCompat.MediaStyle()
-                    .setShowActionsInCompactView(0)
+            if (item.getActions().size() > 0)
+                builder.setStyle(new android.support.v4.media.app.NotificationCompat.MediaStyle()
+                        .setShowActionsInCompactView(0)
             );
         }
         return builder.build();

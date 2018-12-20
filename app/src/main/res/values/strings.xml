@@ -4,4 +4,6 @@
     <string name="pause_text">Pause</string>
     <string name="stop_text">Stop</string>
     <string name="bad_id_exception_text">"View by id : %d not expected"</string>
+    <string name="channel_name">Default</string>
+    <string name="song">http://hcmaslov.d-real.sci-nnov.ru/public/mp3/Queen/Queen%20\'Bohemian%20Rhapsody\'.mp3</string>
 </resources>
