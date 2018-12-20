@@ -57,8 +57,4 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         service.setAction(ACTION_RESET);
         startService(service);
     }
-
-
-
-
 }
