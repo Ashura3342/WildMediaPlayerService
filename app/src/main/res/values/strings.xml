@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WildMediaPlayerService</string>
+    <string name="play_text">Play</string>
+    <string name="pause_text">Pause</string>
+    <string name="stop_text">Stop</string>
+    <string name="bad_id_exception_text">"View by id : %d not expected"</string>
 </resources>
