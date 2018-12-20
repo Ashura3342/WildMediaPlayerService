@@ -42,17 +42,23 @@ class WildPlayer implements WildAudioManagerListener {
       Log.e(this.toString(), e.getMessage());
     }
 
-    this.mPlayer.setOnPreparedListener((MediaPlayer mp) -> {
-      mp.seekTo(0);
-      // Send the audio engine state to the listener
-      if (null != listener) listener.onPrepared(mp);
-      // Update state
-      isPrepared = true;
+    this.mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+      @Override
+      public void onPrepared(MediaPlayer mp) {
+        mp.seekTo(0);
+        // Send the audio engine state to the listener
+        if (null != listener) listener.onPrepared(mp);
+        // Update state
+        isPrepared = true;
+      }
     });
 
-    this.mPlayer.setOnCompletionListener((MediaPlayer mp) -> {
+    this.mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+      @Override
+      public void onCompletion(MediaPlayer mp) {
         // Send the audio engine state to the listener
         if (null != listener) listener.onCompletion(mp);
+      }
     });
   }
 

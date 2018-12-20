@@ -6,8 +6,6 @@ import android.media.AudioManager;
 import android.os.Build;
 import android.widget.Toast;
 
-import fr.wildcodeschool.wildmediaplayerservice.MainActivity;
-
 import static android.media.AudioManager.AUDIOFOCUS_GAIN;
 import static android.media.AudioManager.AUDIOFOCUS_LOSS;
 import static android.media.AudioManager.AUDIOFOCUS_LOSS_TRANSIENT;

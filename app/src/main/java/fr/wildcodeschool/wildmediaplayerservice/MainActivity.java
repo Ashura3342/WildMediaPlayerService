@@ -1,21 +1,21 @@
 package fr.wildcodeschool.wildmediaplayerservice;
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import fr.wildcodeschool.wildmediaplayerservice.notification.MediaNotificationBuilder;
-import fr.wildcodeschool.wildmediaplayerservice.notification.NotificationChannel;
-import fr.wildcodeschool.wildmediaplayerservice.notification.NotificationItem;
-import fr.wildcodeschool.wildmediaplayerservice.notification.PushNotification;
 import fr.wildcodeschool.wildmediaplayerservice.wildplayer.MediaServiceIntent;
 
+import static fr.wildcodeschool.wildmediaplayerservice.wildplayer.MediaServiceIntent.ACTION_PAUSE;
 import static fr.wildcodeschool.wildmediaplayerservice.wildplayer.MediaServiceIntent.ACTION_PLAY;
+import static fr.wildcodeschool.wildmediaplayerservice.wildplayer.MediaServiceIntent.ACTION_RESET;
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
+
+    private Intent service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +27,8 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         playButton.setOnClickListener(this);
         pauseButton.setOnClickListener(this);
         stopButton.setOnClickListener(this);
-        Intent service = new Intent(this, MediaServiceIntent.class);
+        service = new Intent(this, MediaServiceIntent.class);
         startService(service);
-
-        /*NotificationItem notificationItem = new NotificationItem(new NotificationChannel("Default", R.string.channel_name ),
-                                            "Title",
-                                            "Description",
-                                            R.drawable.ic_launcher_background);
-        PushNotification<NotificationItem> pushNotification = new PushNotification<>(this, new MediaNotificationBuilder<NotificationItem>());
-        pushNotification.show(1, notificationItem);*/
     }
 
     @Override
@@ -51,16 +44,18 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     }
 
     private void onClickPlay() {
-        Intent i = new Intent(this, MediaServiceIntent.class);
-        i.setAction(ACTION_PLAY);
-        startService(i);
+        service.setAction(ACTION_PLAY);
+        startService(service);
     }
 
-    protected void  onClickPause(){
-
+    protected void  onClickPause() {
+        service.setAction(ACTION_PAUSE);
+        startService(service);
     }
 
     private void onClickStop() {
+        service.setAction(ACTION_RESET);
+        startService(service);
     }
 
 
