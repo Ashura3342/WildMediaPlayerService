@@ -6,9 +6,9 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 
 public class PushNotification<I extends NotificationItem> {
-    private NotificationManager notificationManager;
-    private Context context;
-    private NotificationBuilder<I> notificationBuilder;
+    protected NotificationManager notificationManager;
+    protected Context context;
+    protected NotificationBuilder<I> notificationBuilder;
 
     public PushNotification(Context context , NotificationBuilder<I> notificationBuilder) {
         this.notificationManager = (NotificationManager)
@@ -22,6 +22,10 @@ public class PushNotification<I extends NotificationItem> {
             if (!channelExist(notificationItem.getChannel().getChannelId()))
                 createChannel(this.context, notificationItem.getChannel());
         }
+        this.notify(id, notificationItem);
+    }
+
+    protected void notify(int id, I notificationItem) {
         this.notificationManager.notify(id,
                 this.notificationBuilder.build(this.context, notificationItem));
     }
